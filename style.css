@@ -1,0 +1,258 @@
+body{
+    background-color: black;
+    color: rgb(255, 255, 255);
+    font-family: SpotifyMixUI, CircularSp-Arab, CircularSp-Hebr, CircularSp-Cyrl, CircularSp-Grek, CircularSp-Deva, "Helvetica Neue", helvetica, arial, "Hiragino Kaku Gothic ProN", Meiryo, "MS Gothic";
+}
+.top{
+    justify-content: space-between;
+}
+.sidel{
+    gap: 5px;
+}
+.login{
+    width: 7vw;
+    font-weight: 700;
+}
+.itslogin:hover{
+    background-color: #e3e3e3;
+    scale: 1.1;
+}
+.signup{
+    background-color: rgb(0, 0, 0);
+    color: rgb(202, 198, 198);
+    border: 2px solid black;
+    margin-right: 3px;
+}
+.signup:hover{
+    color: rgb(202, 198, 198);
+    scale: 1.1;
+}
+.margintop{
+    margin-top: 5px;
+}
+.left{
+    width: 25vw;
+    height: 90vh;
+    background-color: rgb(18, 17, 17);
+    /* height: 100vh; */
+}
+.right{
+    width: 75vw;
+    background-color: rgb(18, 17, 17);
+}
+.sec1{
+    align-items: center;
+    display: flex;
+    gap: 5px;
+    font-size: 10px;
+    justify-content: space-between;
+    padding: 10px;
+    margin-bottom: 7px;
+}
+.write{
+    font-size: 16px;
+    font-weight: 700;
+}
+.apart{
+    align-items: center;
+    display: flex;
+    gap: 5px;
+    font-size: 10px;
+}
+.sec2{
+    /* background-color: rgb(110, 57, 57); */
+    height: 25vw;
+    padding: 1px;
+    overflow: auto;
+}
+.sec2::-webkit-scrollbar {
+    width: 8px; /* Adjust width of the scrollbar */
+}
+
+/* Style for the scrollbar thumb */
+.sec2::-webkit-scrollbar-thumb {
+    background-color: rgb(107, 106, 106); /* Color of the scrollbar thumb */
+    border-radius: 4px; /* Roundness of the scrollbar thumb */
+}
+
+/* Style for the scrollbar thumb when hovered */
+.sec2::-webkit-scrollbar-thumb:hover {
+    background-color: #555; /* Darker color when hovered */
+}
+
+/* Style for the scrollbar track */
+.sec2::-webkit-scrollbar-track {
+    background-color: rgba(0, 0, 0, 0.1); /* Light gray color for visibility */
+    border-radius: 4px; /* Optional: roundness for the track */
+}
+
+.box1{
+    background-color: rgb(36, 36, 37);
+    padding: 16px;
+    margin: 10px;
+}
+.t1{
+    font-size: 16px;
+    margin: 10px;
+}
+.t2{
+    margin: 10px 0px;
+    font-size: 14px;
+}
+.box1 button{
+    border-radius: 18px;
+    padding: 5px;
+    font-weight: 700;
+    font-size: 14px;
+}
+.cross{
+    opacity: 0;
+    position: absolute;
+    left: 25vw;
+    margin-top: 10px;
+}
+.sec3{
+    margin: 20px;
+    font-size: 11px;
+    font-weight: 400;
+    color: #6a6a6a;
+    display: grid;
+    grid-template-columns: 50px 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+}
+.sec3 a{
+    text-decoration: none;
+    color: inherit;
+}
+.eng{
+    border:1px solid grey;
+    border-radius: 20px;
+    margin: 10px;
+    padding: 10px;
+    font-size: 14px;
+    font-weight: 700;
+}
+.head{
+    font-size: 24px;
+    margin-top: 2vw;
+    margin-left: 1vw;
+}
+.hamburger{
+    margin-top: 10px;
+    position: absolute;
+    visibility: hidden;
+}
+.card{
+    margin: 2vw;
+    gap: 2vw;
+    flex-wrap: wrap;
+}
+.card_img img{
+    width: 8vw;
+    height: 8vw;
+    border-radius: 50%;
+}
+.play{
+    position: absolute;
+    bottom: 29vw;
+    left: 32.5vw;
+    opacity: 0;
+}
+.play2{
+    position: absolute;
+    bottom: 29vw;
+    left: 44vw;
+    opacity: 0;
+}
+.play3{
+    position: absolute;
+    bottom: 29vw;
+    left: 55.7vw;
+    opacity: 0;
+}
+.play4{
+    position: absolute;
+    bottom: 29vw;
+    left: 67.3vw;
+    opacity: 0;
+}
+.play5{
+    position: absolute;
+    bottom: 29vw;
+    left: 79vw;
+    opacity: 0;
+}
+.play6{
+    position: absolute;
+    bottom: 29vw;
+    left: 90.6vw;
+    opacity: 0;
+}
+.play7{
+    position: absolute;
+    bottom: 29vw;
+    left: 91.3vw;
+    opacity: 0;
+}
+.pritam{
+    margin: 5px;
+    font-weight:400;
+    font-size:16px;
+    width: 7vw;
+}
+.pritam a{
+    text-decoration: none;
+    color: white;
+}
+@media screen and (max-width: 1015px) {
+    .left{      
+        position: absolute;
+        left: -100%;
+        width: 258px;
+    }
+    .right{
+        width: 100vw;
+        height: fit-content;
+        overflow: auto;
+    }
+    .hamburger{
+        position: static;
+        visibility: visible;
+    }
+    .songlist ul{
+        width: 194px;
+    }
+    .pritam{
+        width: auto;
+    }
+}
+@media screen and (max-width: 755px) {
+    .sec2{
+        height: 50vh;
+    }
+    .login{
+        width: 20vw;
+    }
+    .right{
+        margin-top: 30px;
+    }
+}
+@media screen and (max-width: 400px) {
+    .sec2{
+        height: 37vh;
+        margin-top: 3vh;
+    }
+}
+@media screen and (max-width: 545px) {
+    .sec2{
+        height: 30vh;
+        margin-top: 3vh;
+    }
+}
+/* .library ul li{
+    display: inline-block;
+    margin-left: -27px;
+}
+.library ul li span span{
+    margin-top: -20px;
+} */
