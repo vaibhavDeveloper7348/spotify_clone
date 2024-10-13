@@ -114,7 +114,7 @@
     border-radius: 50%;
     position: absolute;
     background-color: white;
-    bottom: 3.5vh;
+    bottom: 5vh;
     transition: left 0.5s;
     cursor: pointer;
 }
