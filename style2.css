@@ -100,24 +100,26 @@
     justify-content: center;
     gap: 1vw;
 }
-.seekbar{
+.seekbar {
     height: 3px;
     width: inherit;
     background-color: azure;
-    bottom: 2px;
     margin-top: 13px;
-    cursor: pointer; 
+    cursor: pointer;
+    /* position: relative;  */
 }
-.circle{
+
+.circle {
     height: 10px;
     width: 10px;
     border-radius: 50%;
-    position: absolute;
+    position: absolute; 
     background-color: white;
-    bottom: 5vh;
+    top: 43px; 
     transition: left 0.5s;
     cursor: pointer;
 }
+
 /* @media screen and (max-width: 1015px) {
     .playbar{
         width: 90vw;
@@ -184,8 +186,4 @@
     .circle{
         bottom: 5.5vh;
     }
-<<<<<<< HEAD
-} */
-=======
-} */
->>>>>>> 2258ad123668c56a92d428590eb6e9063bedccc2
+}*/
