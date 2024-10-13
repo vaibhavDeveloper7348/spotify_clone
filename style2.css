@@ -132,7 +132,7 @@
 } */
 @media screen and (max-width: 1015px) {
     .playbar{
-        width: calc(100vw - 4vw);
+        width: calc(100vw - 6vw);
     }    
 }
 /* @media screen and (max-width: 1027px) {
