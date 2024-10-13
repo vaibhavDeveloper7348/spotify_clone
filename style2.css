@@ -76,7 +76,7 @@
 .playbar{
     position: fixed;
     bottom: 0px;
-    width: 74vw;
+    width: calc(100vw - 28vw);
     justify-content: center;
     background-color: rgb(40, 40, 39);
     height: 9vh;
@@ -114,23 +114,28 @@
     border-radius: 50%;
     position: absolute;
     background-color: white;
-    bottom: 20px;
+    bottom: calc(100vh - 96.5vh);
     transition: left 0.5s;
     cursor: pointer;
 }
-@media screen and (max-width: 1015px) {
+/* @media screen and (max-width: 1015px) {
     .playbar{
         width: 90vw;
         right: 23px;
     }
-}
-@media screen and (max-width: 1030px) {
+} */
+/* @media screen and (max-width: 1030px) {
     
     .circle{
         bottom: 63px;
     }
+} */
+@media screen and (max-width: 1015px) {
+    .playbar{
+        width: calc(100vw - 4vw);
+    }    
 }
-@media screen and (max-width: 1027px) {
+/* @media screen and (max-width: 1027px) {
     
     .circle{
         bottom: 23px;
@@ -149,10 +154,6 @@
     }
 }
 @media screen and (max-width: 755px) {
-    .playbar{
-        width: 90vw;
-        right: 20px;
-    }
     .circle{
         bottom: 5.2vh;
     }
@@ -164,10 +165,10 @@
 }
 @media screen and (max-width: 545px) {
     .circle{
-        bottom: 4.5vh;
+        bottom: 5.2vh;
     }
-}
-@media screen and (max-width: 380px) {
+} */
+/* @media screen and (max-width: 380px) {
     .playbar{
         width: 90vw;
         right: 19px;
@@ -183,4 +184,4 @@
     .circle{
         bottom: 5.5vh;
     }
-}
+} */
