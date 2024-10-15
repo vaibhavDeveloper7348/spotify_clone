@@ -249,6 +249,12 @@ body{
         margin-top: 3vh;
     }
 }
+@media screen and (max-width: 1032px) {
+    .card_img img{
+        width: 13vw;
+        height: 12vw;
+    }
+}
 /* .library ul li{
     display: inline-block;
     margin-left: -27px;
