@@ -69,7 +69,7 @@
           <div class="hamburger"><img class="inside_hb" src="svg/hamburger.svg"></div>
             <div class="head bold">Popular Artists</div>
             <div class="card flex">
-                <div class="card1 cardc">
+                <div data-folder="pritam" class="card1 cardc">
                   <div class="play"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="45" height="45" fill="none">
                     <!-- Green Circle Background -->
                     <circle cx="12" cy="12" r="10" fill="#00FF00" />
@@ -83,7 +83,7 @@
                   <div class="pritam"><a href="/">Pritam</a></div>
                   <div style="margin: 5px;font-weight:400;font-size:14px;color:rgb(190, 189, 189);">Artist</div>  
                 </div>
-                <div class="card2 cardc">
+                <div data-folder="ar_rahman" class="card2 cardc">
                   <div class="play2"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="45" height="45" fill="none">
                     <!-- Green Circle Background -->
                     <circle cx="12" cy="12" r="10" fill="#00FF00" />
@@ -95,7 +95,7 @@
                   <div class="pritam"><a href="/">A.R.Rahman</a></div>
                   <div style="margin: 5px;font-weight:400;font-size:14px;color:rgb(190, 189, 189);">Artist</div>  
                 </div>
-                <div class="card3 cardc">
+                <div data-folder="sachin-jigar" class="card3 cardc">
                   <div class="play3"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="45" height="45" fill="none">
                     <!-- Green Circle Background -->
                     <circle cx="12" cy="12" r="10" fill="#00FF00" />
@@ -107,7 +107,7 @@
                   <div class="pritam"><a href="/">Sachin-Jigar</a></div>
                   <div style="margin: 5px;font-weight:400;font-size:14px;color:rgb(190, 189, 189);">Artist</div>  
                 </div>
-                <div class="card4 cardc">
+                <div data-folder="arijit" class="card4 cardc">
                   <div class="play4"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="45" height="45" fill="none">
                     <!-- Green Circle Background -->
                     <circle cx="12" cy="12" r="10" fill="#00FF00" />
@@ -119,7 +119,7 @@
                   <div class="pritam"><a href="/">Arijit Singh</a></div>
                   <div style="margin: 5px;font-weight:400;font-size:14px;color:rgb(190, 189, 189);">Artist</div>  
                 </div>
-                <div class="card5 cardc">
+                <div data-folder="jubin_nautiyal" class="card5 cardc">
                   <div class="play5"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="45" height="45" fill="none">
                     <!-- Green Circle Background -->
                     <circle cx="12" cy="12" r="10" fill="#00FF00" />
@@ -131,7 +131,7 @@
                   <div class="pritam"><a href="/">Jubin Nautiyal</a></div>
                   <div style="margin: 5px;font-weight:400;font-size:14px;color:rgb(190, 189, 189);">Artist</div>  
                 </div>
-                <div class="card6 cardc">
+                <div data-folder="atif_aslam" class="card6 cardc">
                   <div class="play6"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="45" height="45" fill="none">
                     <!-- Green Circle Background -->
                     <circle cx="12" cy="12" r="10" fill="#00FF00" />
@@ -145,14 +145,16 @@
                 </div>
                 <div class="playbar">
                   <div class="abovebar">
-                    <div class="songinfo"></div>
+                    <div class="flex songvol">
+                      <div class="volsvg"><img src="svg/volume.svg" class="v"><input type="range" class="vol"></div>
+                      <div class="songinfo"></div>
+                    </div>
                     <div class="pbtns">
                       <img id="previous" src="svg/previousplay.svg">
                       <img id="play" src="svg/playbtn.svg">
                       <img id="forward" src="svg/nextplay.svg">
                     </div>
                     <div class="songTime"></div>
-
                   </div>
                   <div class="seekbar"></div>
                   <div class="circle"></div>
