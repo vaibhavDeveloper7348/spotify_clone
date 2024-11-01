@@ -78,7 +78,9 @@ async function displayalbums() {
     div.innerHTML = response
     let cardcontainer= document.querySelector(".card")
     let anchors= div.getElementsByTagName("a")
-    Array.from(anchors).forEach(async e=>{
+    let array=Array.from(anchors)
+    for (let index = 0; index < array.length; index++) {
+        const e = array[index];
         if(e.href.includes("/songs/")){
             let folder= e.href.split("/songs/")[1];
             let a = await fetch(`http://127.0.0.1:5500/songs/${folder}/info.json`);
@@ -98,6 +100,13 @@ async function displayalbums() {
                   <div style="margin: 5px;font-weight:400;font-size:14px;color:rgb(190, 189, 189);">${response.description}</div>  
                 </div>`
         }
+    }
+
+    //load folder
+    Array.from(document.getElementsByClassName("cardc")).forEach(e=>{
+        e.addEventListener("click",async item=>{
+            await getsongs(`songs/${item.currentTarget.dataset.folder}`)
+        })
     })
 }
 
@@ -221,13 +230,6 @@ async function main() {
     //volume
     document.querySelector(".volsvg").getElementsByTagName("input")[0].addEventListener("change", (e) => {
         currentSong.volume = parseInt(e.target.value) / 100
-    })
-
-    //load folder
-    Array.from(document.getElementsByClassName("cardc")).forEach(e=>{
-        e.addEventListener("click",async item=>{
-            await getsongs(`songs/${item.currentTarget.dataset.folder}`)
-        })
     })
 
 }
