@@ -2,6 +2,7 @@ body{
     background-color: black;
     color: rgb(255, 255, 255);
     font-family: SpotifyMixUI, CircularSp-Arab, CircularSp-Hebr, CircularSp-Cyrl, CircularSp-Grek, CircularSp-Deva, "Helvetica Neue", helvetica, arial, "Hiragino Kaku Gothic ProN", Meiryo, "MS Gothic";
+    overflow-x: hidden;
 }
 .top{
     justify-content: space-between;
@@ -154,8 +155,8 @@ body{
 }
 .play{
     position: absolute;
-    top: 14vw;
-    left: 32.5vw;
+    top: 4vw;
+    left: 5.5vw;
     opacity: 0;
 }
 .play2{
@@ -203,6 +204,13 @@ body{
 .pritam a{
     text-decoration: none;
     color: white;
+}
+.pritam-des{
+    width: 7vw;
+    margin: 5px;
+    font-weight:400;
+    font-size:14px;
+    color:rgb(190, 189, 189);
 }
 @media screen and (max-width: 1032px) {
     .card_img img{

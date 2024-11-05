@@ -73,6 +73,7 @@
     flex-direction: column;
     flex-wrap: wrap;
     transition: all ease-in-out 1s;
+    position: relative;
 }
 .playbar{
     position: fixed;
@@ -84,7 +85,6 @@
     padding: 10px;
     border-radius: 9px;
     bottom: 20px;
-    right: 10px;
 }
 .abovebar{
     display: flex;

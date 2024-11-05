@@ -32,7 +32,7 @@ async function getsongs(folder) {
 
     }
     let songsUL = document.querySelector(".songlist").getElementsByTagName("ul")[0];
-    songsUL.innerHTML= "";
+    songsUL.innerHTML = "";
     for (const song of songs) {
         songsUL.innerHTML += `<li>
         <div class="msvg">
@@ -51,7 +51,7 @@ async function getsongs(folder) {
             playMusic(e.querySelector(".sname").firstElementChild.innerHTML.trim())
         })
     })
-    
+
 
 }
 
@@ -66,8 +66,8 @@ const playMusic = (music, pause = false) => {
     }
     document.querySelector(".songinfo").innerHTML = decodeURI(music).split(".mp3")[0]
     document.querySelector(".songTime").innerHTML = "00:00"
-    
-    
+
+
 }
 
 //display album
@@ -76,16 +76,16 @@ async function displayalbums() {
     let response = await a.text();
     let div = document.createElement("div")
     div.innerHTML = response
-    let cardcontainer= document.querySelector(".card")
-    let anchors= div.getElementsByTagName("a")
-    let array=Array.from(anchors)
+    let cardcontainer = document.querySelector(".card")
+    let anchors = div.getElementsByTagName("a")
+    let array = Array.from(anchors)
     for (let index = 0; index < array.length; index++) {
         const e = array[index];
-        if(e.href.includes("/songs/")){
-            let folder= e.href.split("/songs/")[1];
+        if (e.href.includes("/songs/")) {
+            let folder = e.href.split("/songs/")[1];
             let a = await fetch(`http://127.0.0.1:5500/songs/${folder}/info.json`);
             let response = await a.json();
-            cardcontainer.innerHTML+= `<div data-folder="${folder}" class="card1 cardc">
+            cardcontainer.innerHTML += `<div data-folder="${folder}" class="card1 cardc">
                   <div class="play"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="45" height="45" fill="none">
                     <!-- Green Circle Background -->
                     <circle cx="12" cy="12" r="10" fill="#00FF00" />
@@ -97,14 +97,14 @@ async function displayalbums() {
                 
                 </div>
                   <div class="pritam"><a href="/">${response.title}</a></div>
-                  <div style="margin: 5px;font-weight:400;font-size:14px;color:rgb(190, 189, 189);">${response.description}</div>  
+                  <div class="pritam-des">${response.description}</div>  
                 </div>`
         }
     }
 
     //load folder
-    Array.from(document.getElementsByClassName("cardc")).forEach(e=>{
-        e.addEventListener("click",async item=>{
+    Array.from(document.getElementsByClassName("cardc")).forEach(e => {
+        e.addEventListener("click", async item => {
             await getsongs(`songs/${item.currentTarget.dataset.folder}`)
         })
     })
@@ -116,7 +116,7 @@ async function main() {
     await getsongs("songs/pritam")
     playMusic(songs[0], true)
     displayalbums()
-    
+
 
     //attach an eventlistener to play,next,previous
     if (window.innerWidth < 610) {
@@ -191,19 +191,34 @@ async function main() {
     }
     )
 
+
+    //mute
+    document.querySelector(".v").addEventListener("click", () => {
+        if (currentSong.muted == true) {
+            currentSong.muted = false;
+            document.querySelector(".vol").style.display = "inline"
+            document.querySelector(".v").src = "svg/volume.svg"
+        }
+        else {
+            currentSong.muted = true;
+            document.querySelector(".v").src = "svg/mute.svg"
+            document.querySelector(".vol").style.display = "none"
+        }
+    })
+
     //volume range show
     document.querySelector(".volsvg").addEventListener("mouseover", () => {
-        document.querySelector(".vol").style.display = "inline"
+        if (!currentSong.muted) {
+            document.querySelector(".vol").style.display = "inline"
+        }
     })
     document.querySelector(".volsvg").addEventListener("mouseout", () => {
         document.querySelector(".vol").style.display = "none"
     })
+
     //open hamburger
     document.querySelector(".inside_hb").addEventListener("click", () => {
         document.querySelector(".left").style.position = "fixed"
-        // document.querySelector(".sec1").style.height= 5+"vh"
-        // document.querySelector(".sec2").style.height= 35+"vh"
-        // document.querySelector(".sec3").style.height= 5+"vh"
         document.querySelector(".cross").style.position = "static"
         document.querySelector(".hamburger").style.position = "absolute"
         document.querySelector(".hamburger").style.opacity = 0
