@@ -6,6 +6,7 @@ body{
 }
 .top{
     justify-content: space-between;
+    margin-top: 4vh;
 }
 .sidel{
     gap: 5px;
@@ -31,14 +32,18 @@ body{
 .margintop{
     margin-top: 5px;
 }
+.container{
+    margin-top: 4vh;
+}
 .left{
     width: 25vw;
-    height: 90vh;
+    height: 100vh;
     background-color: rgb(18, 17, 17);
     /* height: 100vh; */
 }
 .right{
     width: 75vw;
+    height: 0vh;
     background-color: rgb(18, 17, 17);
 }
 .sec1{
@@ -155,44 +160,8 @@ body{
 }
 .play{
     position: absolute;
-    top: 4vw;
+    top: 2vw;
     left: 5.5vw;
-    opacity: 0;
-}
-.play2{
-    position: absolute;
-    bottom: 29vw;
-    left: 44vw;
-    opacity: 0;
-}
-.play3{
-    position: absolute;
-    bottom: 29vw;
-    left: 55.7vw;
-    opacity: 0;
-}
-.play4{
-    position: absolute;
-    bottom: 29vw;
-    left: 67.3vw;
-    opacity: 0;
-}
-.play5{
-    position: absolute;
-    bottom: 29vw;
-    left: 79vw;
-    opacity: 0;
-}
-.play6{
-    position: absolute;
-    bottom: 29vw;
-    left: 90.6vw;
-    opacity: 0;
-}
-.play7{
-    position: absolute;
-    bottom: 29vw;
-    left: 91.3vw;
     opacity: 0;
 }
 .pritam{
@@ -259,6 +228,10 @@ body{
     }
     .right{
         margin-top: 30px;
+    }
+    .left{
+        margin-top: 30px;
+        flex-wrap: wrap;
     }
 }
 @media screen and (max-width: 400px) {

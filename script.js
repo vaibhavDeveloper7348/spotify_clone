@@ -218,9 +218,9 @@ async function main() {
 
     //open hamburger
     document.querySelector(".inside_hb").addEventListener("click", () => {
-        document.querySelector(".left").style.position = "fixed"
+        document.querySelector(".left").style.position = "absolute"
+        document.querySelector(".left").style.zIndex = "10"
         document.querySelector(".cross").style.position = "static"
-        document.querySelector(".hamburger").style.position = "absolute"
         document.querySelector(".hamburger").style.opacity = 0
         document.querySelector(".cross").style.opacity = 1
         document.querySelector(".left").style.left = 0 + "%"

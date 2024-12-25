@@ -15,55 +15,7 @@
     bottom: 30vw;
     transition: all 2s ease-in-out;
 }
-.card2:hover .play2{
-    opacity: 1;
-    bottom: 30vw;
-    transition: all 2s ease-in-out;
-}
-.card3:hover .play3{
-    opacity: 1;
-    bottom: 30vw;
-    transition: all 2s ease-in-out;
-}
-.card4:hover .play4{
-    opacity: 1;
-    bottom: 30vw;
-    transition: all 2s ease-in-out;
-}
-.card5:hover .play5{
-    opacity: 1;
-    bottom: 30vw;
-    transition: all 2s ease-in-out;
-}
-.card6:hover .play6{
-    opacity: 1;
-    bottom: 30vw;
-    transition: all 2s ease-in-out;
-}
-.card7:hover .play7{
-    opacity: 1;
-    bottom: 30vw;
-    transition: all 2s ease-in-out;
-}
 .card1:hover{
-    background-color: rgb(59, 59, 59);
-}
-.card2:hover{
-    background-color: rgb(59, 59, 59);
-}
-.card3:hover{
-    background-color: rgb(59, 59, 59);
-}
-.card4:hover{
-    background-color: rgb(59, 59, 59);
-}
-.card5:hover{
-    background-color: rgb(59, 59, 59);
-}
-.card6:hover{
-    background-color: rgb(59, 59, 59);
-}
-.card7:hover{
     background-color: rgb(59, 59, 59);
 }
 .cardc{
@@ -77,6 +29,7 @@
 }
 .playbar{
     position: fixed;
+    z-index: 20;
     bottom: 0px;
     width: calc(100vw - 29vw);
     justify-content: center;
