@@ -189,7 +189,7 @@ async function main() {
         if (currentSong.currentTime == currentSong.duration) {
             play.src = "/svg/playbtn.svg"
             let s = currentSong.src.split("/").slice(-1)
-        for (let index = 0; index < songs.length; index++) {
+            for (let index = 0; index < songs.length; index++) {
             if (songs[index] == s) {
                 ind = index
             }
