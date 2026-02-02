@@ -17,43 +17,39 @@ function secondsToMinutesSeconds(seconds) {
 
 
 async function getsongs(folder) {
-    currFolder = folder
-    let a = await fetch(`/${folder}/`);
-    let response = await a.text();
-    let div = document.createElement("div")
-    div.innerHTML = response
-    let as = div.getElementsByTagName("a")
-    songs = []
-    for (let index = 0; index < as.length; index++) {
-        const element = as[index];
-        if (element.href.endsWith(".mp3")) {
-            songs.push(element.href.split(`/${currFolder}/`)[1])
-        }
+    currFolder = folder;
 
-    }
-    let songsUL = document.querySelector(".songlist").getElementsByTagName("ul")[0];
+    let res = await fetch(`/${folder}/songs.json`);
+    let data = await res.json();
+
+    songs = data.songs;
+
+    let songsUL = document.querySelector(".songlist ul");
     songsUL.innerHTML = "";
+
     for (const song of songs) {
-        songsUL.innerHTML += `<li>
-        <div class="msvg">
-        <img src="/svg/music.svg">
-        </div>
-        <div class="sname"><div>${song.replaceAll("%20", " ")}</div>
-        <div>artist</div></div>
-        <div style="align-items:center;justify-content:center"><img src="/svg/playbtn.svg" style="margin-top: 5px;"></div></li>`
+        songsUL.innerHTML += `
+        <li>
+          <div class="msvg">
+            <img src="/svg/music.svg">
+          </div>
+          <div class="sname">
+            <div>${song}</div>
+            <div>artist</div>
+          </div>
+          <div>
+            <img src="/svg/playbtn.svg">
+          </div>
+        </li>`;
     }
-    // var audio = new Audio(songs[2]);
-    // audio.play();
 
-    // addEventListener to each song
-    Array.from(document.querySelector(".songlist").getElementsByTagName("li")).forEach(e => {
+    Array.from(document.querySelectorAll(".songlist li")).forEach(e => {
         e.addEventListener("click", () => {
-            playMusic(e.querySelector(".sname").firstElementChild.innerHTML.trim())
-        })
-    })
-
-
+            playMusic(e.querySelector(".sname div").innerText);
+        });
+    });
 }
+
 
 //playmusic
 
@@ -71,47 +67,42 @@ const playMusic = (music, pause = false) => {
 }
 
 //display album
+const albums = [
+  "arijit",
+  "ar_rahman",
+  "atif_aslam",
+  "jubin_nautiyal",
+  "pritam",
+  "sachin-jigar"
+];
+
 async function displayalbums() {
-    let a = await fetch(`/songs/`);
-    let response = await a.text();
-    let div = document.createElement("div")
-    div.innerHTML = response
-    let cardcontainer = document.querySelector(".card")
-    let anchors = div.getElementsByTagName("a")
-    let array = Array.from(anchors)
-    for (let index = 0; index < array.length; index++) {
-        const e = array[index];
-        if (e.href.includes("/songs/")) {
-            let folder = e.href.split("/songs/")[1];
-            let a = await fetch(`/songs/${folder}/info.json`);
-            let response = await a.json();
-            cardcontainer.innerHTML += `<div data-folder="${folder}" class="card1 cardc">
-                  <div class="play"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="45" height="45" fill="none">
-                    <!-- Green Circle Background -->
-                    <circle cx="12" cy="12" r="10" fill="#00FF00" />
-                
-                    <!-- Black Play Button -->
-                    <path d="M9.5 11.1998V12.8002C9.5 14.3195 9.5 15.0791 9.95576 15.3862C10.4115 15.6932 11.0348 15.3535 12.2815 14.6741L13.7497 13.8738C15.2499 13.0562 16 12.6474 16 12C16 11.3526 15.2499 10.9438 13.7497 10.1262L12.2815 9.32594C11.0348 8.6465 10.4115 8.30678 9.95576 8.61382C9.5 8.92086 9.5 9.6805 9.5 11.1998Z" fill="black" />
-                </svg></div>
-                  <div class="card_img"><img src="songs/${folder}/cover.jpeg">
-                
-                </div>
-                  <div class="pritam"><a href="/">${response.title}</a></div>
-                  <div class="pritam-des">${response.description}</div>  
-                </div>`
-        }
+    let cardcontainer = document.querySelector(".card");
+    cardcontainer.innerHTML = "";
+
+    for (const folder of albums) {
+        let res = await fetch(`/songs/${folder}/info.json`);
+        let data = await res.json();
+
+        cardcontainer.innerHTML += `
+        <div data-folder="${folder}" class="card1 cardc">
+          <div class="play">▶</div>
+          <div class="card_img">
+            <img src="songs/${folder}/cover.jpeg">
+          </div>
+          <div class="pritam">${data.title}</div>
+          <div class="pritam-des">${data.description}</div>
+        </div>`;
     }
 
-    //load folder
     Array.from(document.getElementsByClassName("cardc")).forEach(e => {
         e.addEventListener("click", async item => {
-            await getsongs(`songs/${item.currentTarget.dataset.folder}`)
-            if (songs.length > 0) {
+            await getsongs(`songs/${item.currentTarget.dataset.folder}`);
             playMusic(songs[0]);
-        }
-        })
-    })
+        });
+    });
 }
+
 
 //MAIN MAIN MAIN MAIN MAIN MAIN MAIN MAIN MAIN MAIN MAIN MAIN MAIN MAIN MAIN MAIN MAIN MAIN MAIN MAIN MAIN MAIN
 
