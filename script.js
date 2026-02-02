@@ -103,6 +103,10 @@ async function displayalbums() {
     });
 }
 
+function getCurrentSongName() {
+    return decodeURIComponent(currentSong.src.split("/").pop());
+}
+
 
 //MAIN MAIN MAIN MAIN MAIN MAIN MAIN MAIN MAIN MAIN MAIN MAIN MAIN MAIN MAIN MAIN MAIN MAIN MAIN MAIN MAIN MAIN
 
@@ -131,77 +135,46 @@ async function main() {
     })
 
     //previous
-    document.querySelector("#previous").addEventListener("click", e => {
-        let ind;
-        let s = currentSong.src.split("/").slice(-1)
-        for (let index = 0; index < songs.length; index++) {
-            if (songs[index] == s) {
-                ind = index
-            }
-        }
-        if (ind == 0) {
-            ind = songs.length
-        }
-        ind = ind - 1
-        let pause = false
-        currentSong.src = `/${currFolder}/` + songs[ind];
-        if (!pause) {
-            currentSong.play()
-            play.src = "svg/pause.svg"
-        }
-        document.querySelector(".songinfo").innerHTML = decodeURI(songs[ind]).split(".mp3")[0]
-        document.querySelector(".songTime").innerHTML = "00:00"
-    })
+    document.querySelector("#previous").addEventListener("click", () => {
+    let current = getCurrentSongName();
+    let ind = songs.indexOf(current);
+
+    if (ind === -1) return;
+
+    ind = (ind === 0) ? songs.length - 1 : ind - 1;
+
+    playMusic(songs[ind]);
+});
+
 
     //forward
     document.querySelector("#forward").addEventListener("click", () => {
-        let ind;
-        let s = currentSong.src.split("/").slice(-1)
-        for (let index = 0; index < songs.length; index++) {
-            if (songs[index] == s) {
-                ind = index
-            }
-        }
-        if (ind == songs.length - 1) {
-            ind = -1
-        }
-        ind = ind + 1
-        let pause = false
-        currentSong.src = `/${currFolder}/` + songs[ind];
-        if (!pause) {
-            currentSong.play()
-            play.src = "svg/pause.svg"
-        }
-        document.querySelector(".songinfo").innerHTML = decodeURI(songs[ind]).split(".mp3")[0]
-        document.querySelector(".songTime").innerHTML = "00:00"
-    })
+    let current = getCurrentSongName();
+    let ind = songs.indexOf(current);
+
+    if (ind === -1) return;
+
+    ind = (ind === songs.length - 1) ? 0 : ind + 1;
+
+    playMusic(songs[ind]);
+});
+
 
     //update time of song
 
     currentSong.addEventListener("timeupdate", () => {
         document.querySelector(".songTime").innerHTML = `${secondsToMinutesSeconds(currentSong.currentTime)}/${secondsToMinutesSeconds(currentSong.duration)}`
         document.querySelector(".circle").style.left = (((currentSong.currentTime) / (currentSong.duration) * 98.5)) + "%"
-        if (currentSong.currentTime == currentSong.duration) {
-            play.src = "svg/playbtn.svg"
-            let s = currentSong.src.split("/").slice(-1)
-            for (let index = 0; index < songs.length; index++) {
-                if (songs[index] == s) {
-                    ind = index
-                }
-            }
-            if (ind == songs.length - 1) {
-                ind = -1
-            }
-            ind = ind + 1
-            let pause = false
-            currentSong.src = `/${currFolder}/` + songs[ind];
-            if (!pause) {
-                currentSong.play()
-                play.src = "svg/pause.svg"
-            }
-            document.querySelector(".songinfo").innerHTML = decodeURI(songs[ind]).split(".mp3")[0]
-            document.querySelector(".songTime").innerHTML = "00:00"
+        if (currentSong.currentTime === currentSong.duration) {
+            let current = getCurrentSongName();
+            let ind = songs.indexOf(current);
+
+            if (ind === -1) return;
+
+            ind = (ind === songs.length - 1) ? 0 : ind + 1;
+            playMusic(songs[ind]);
         }
+
     }
     )
 
