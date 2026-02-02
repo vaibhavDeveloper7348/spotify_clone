@@ -18,7 +18,7 @@ function secondsToMinutesSeconds(seconds) {
 
 async function getsongs(folder) {
     currFolder = folder
-    let a = await fetch(`http://127.0.0.1:5500/${currFolder}/`);
+    let a = await fetch(`/${folder}/`);
     let response = await a.text();
     let div = document.createElement("div")
     div.innerHTML = response
@@ -72,7 +72,7 @@ const playMusic = (music, pause = false) => {
 
 //display album
 async function displayalbums() {
-    let a = await fetch(`http://127.0.0.1:5500/songs/`);
+    let a = await fetch(`/songs/`);
     let response = await a.text();
     let div = document.createElement("div")
     div.innerHTML = response
@@ -83,7 +83,7 @@ async function displayalbums() {
         const e = array[index];
         if (e.href.includes("/songs/")) {
             let folder = e.href.split("/songs/")[1];
-            let a = await fetch(`http://127.0.0.1:5500/songs/${folder}/info.json`);
+            let a = await fetch(`/songs/${folder}/info.json`);
             let response = await a.json();
             cardcontainer.innerHTML += `<div data-folder="${folder}" class="card1 cardc">
                   <div class="play"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="45" height="45" fill="none">
@@ -106,6 +106,9 @@ async function displayalbums() {
     Array.from(document.getElementsByClassName("cardc")).forEach(e => {
         e.addEventListener("click", async item => {
             await getsongs(`songs/${item.currentTarget.dataset.folder}`)
+            if (songs.length > 0) {
+            playMusic(songs[0]);
+        }
         })
     })
 }
@@ -160,7 +163,7 @@ async function main() {
     })
 
     //forward
-    document.querySelector("#forward").addEventListener("click", e => {
+    document.querySelector("#forward").addEventListener("click", () => {
         let ind;
         let s = currentSong.src.split("/").slice(-1)
         for (let index = 0; index < songs.length; index++) {
@@ -181,12 +184,32 @@ async function main() {
         document.querySelector(".songinfo").innerHTML = decodeURI(songs[ind]).split(".mp3")[0]
         document.querySelector(".songTime").innerHTML = "00:00"
     })
+
     //update time of song
+
     currentSong.addEventListener("timeupdate", () => {
         document.querySelector(".songTime").innerHTML = `${secondsToMinutesSeconds(currentSong.currentTime)}/${secondsToMinutesSeconds(currentSong.duration)}`
         document.querySelector(".circle").style.left = (((currentSong.currentTime) / (currentSong.duration) * 98.5)) + "%"
         if (currentSong.currentTime == currentSong.duration) {
             play.src = "svg/playbtn.svg"
+            let s = currentSong.src.split("/").slice(-1)
+            for (let index = 0; index < songs.length; index++) {
+                if (songs[index] == s) {
+                    ind = index
+                }
+            }
+            if (ind == songs.length - 1) {
+                ind = -1
+            }
+            ind = ind + 1
+            let pause = false
+            currentSong.src = `/${currFolder}/` + songs[ind];
+            if (!pause) {
+                currentSong.play()
+                play.src = "svg/pause.svg"
+            }
+            document.querySelector(".songinfo").innerHTML = decodeURI(songs[ind]).split(".mp3")[0]
+            document.querySelector(".songTime").innerHTML = "00:00"
         }
     }
     )
@@ -203,6 +226,7 @@ async function main() {
             currentSong.muted = true;
             document.querySelector(".v").src = "svg/mute.svg"
             document.querySelector(".vol").style.display = "none"
+            // document.querySelector(".circle").style.top = 102 + "px"
         }
     })
 
@@ -210,10 +234,12 @@ async function main() {
     document.querySelector(".volsvg").addEventListener("mouseover", () => {
         if (!currentSong.muted) {
             document.querySelector(".vol").style.display = "inline"
+            // document.querySelector(".circle").style.top = 129.5 + "px"
         }
     })
     document.querySelector(".volsvg").addEventListener("mouseout", () => {
         document.querySelector(".vol").style.display = "none"
+        // document.querySelector(".circle").style.top = 102 + "px"
     })
 
     //open hamburger

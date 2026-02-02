@@ -160,7 +160,7 @@ body{
 }
 .play{
     position: absolute;
-    top: 2vw;
+    top: 6vw;
     left: 5.5vw;
     opacity: 0;
 }
@@ -188,8 +188,8 @@ body{
     }
     .play{
         position: absolute;
-        top: 19vw;
-        left: 37.4vw;
+        top: 9vw;
+        left: 9.4vw;
         opacity: 0;
     }
 }
@@ -200,8 +200,8 @@ body{
         width: 258px;
     }
     .play{
-        top: 24vw;
-        left: 12vw;
+        top: 8.5vw;
+        left: 10vw;
     }
     .right{
         width: 100vw;
