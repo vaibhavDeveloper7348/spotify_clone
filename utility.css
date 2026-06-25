@@ -46,3 +46,10 @@
 .bradius{
     border-radius: 20px;
 }
+.hidden{
+    display: none !important;
+}
+.black{
+    background-color: rgb(135, 134, 134);
+    border-radius: 50%;
+}
