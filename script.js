@@ -1,4 +1,5 @@
 let currentSong = new Audio();
+window.currentSong = currentSong; // lets auth.js (a module, separate scope) pause playback on logout
 let songs;
 let currFolder;
 function secondsToMinutesSeconds(seconds) {
