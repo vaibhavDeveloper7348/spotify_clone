@@ -9,22 +9,56 @@
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="style2.css">
   <link rel="stylesheet" href="utility.css">
+  <link rel="stylesheet" href="auth.css">
 </head>
 
 <body>
-  <div class="top flex">
+  <div id="authOverlay" class="auth-overlay">
+    <div class="auth-card">
+      <div class="auth-logo flex">
+        <img src="svg/logo.svg" class="invert">
+        <div class="bold">Spotify</div>
+      </div>
+      <div class="auth-tabs">
+        <button type="button" id="tabLogin" class="auth-tab active">Log in</button>
+        <button type="button" id="tabSignup" class="auth-tab">Sign up</button>
+      </div>
+
+      <form id="loginForm" class="auth-form">
+        <label for="loginEmail">Email</label>
+        <input type="email" id="loginEmail" required autocomplete="email">
+        <label for="loginPassword">Password</label>
+        <input type="password" id="loginPassword" required autocomplete="current-password">
+        <div class="auth-error" id="loginError"></div>
+        <button type="submit" class="auth-submit">Log in</button>
+      </form>
+
+      <form id="signupForm" class="auth-form hidden">
+        <label for="signupEmail">Email</label>
+        <input type="email" id="signupEmail" required autocomplete="email">
+        <label for="signupPassword">Password</label>
+        <input type="password" id="signupPassword" required autocomplete="new-password" minlength="6">
+        <label for="signupConfirm">Confirm password</label>
+        <input type="password" id="signupConfirm" required autocomplete="new-password" minlength="6">
+        <div class="auth-error" id="signupError"></div>
+        <button type="submit" class="auth-submit">Sign up</button>
+      </form>
+    </div>
+  </div>
+
+  <div class="top flex hidden">
     <div class="sidel flex">
       <div><img src="svg/logo.svg" class="invert"></div>
       <div class="bold margintop">Spotify</div>
     </div>
     <div class="sider flex">
-      <button class="signup login bradius pad">Sign up</button>
+      <button class="signup login bradius pad" id="signupBtn">Sign up</button>
       <div>
-        <button class="itslogin login bradius pad">Login</button>
+        <button class="itslogin login bradius pad" id="loginBtn">Login</button>
       </div>
     </div>
   </div>
-  <div class="container flex">
+  <div class="container flex hidden">
     <div class="left">
       <div class="cross"><img src="svg/cross.svg"></div>
       <div class="library">
@@ -93,6 +127,7 @@
 
   </div>
   <script src="script.js"></script>
+  <script type="module" src="auth.js"></script>
 </body>
 
 </html>
