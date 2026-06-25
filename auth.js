@@ -129,6 +129,13 @@ onAuthStateChanged(auth, (user) => {
     signupBtn.classList.add("hidden");
     loginBtn.textContent = "Log out";
   } else {
+    if (window.currentSong && !window.currentSong.paused) {
+      window.currentSong.pause();
+    }
+    if (window.play) {
+      window.play.src = "svg/playbtn.svg";
+    }
+
     authOverlay.classList.remove("hidden");
     topBar.classList.add("hidden");
     appContainer.classList.add("hidden");
